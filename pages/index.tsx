@@ -4,7 +4,6 @@ import Image from "next/image";
 import styles from "../styles/Main.module.scss";
 
 import ReactPlayer from "react-player/lazy";
-import InputWidget from "../components/InputWidget/InputWidget";
 import SliderWidget from "../components/SliderWidget/SliderWidget";
 
 import ImageGallery from "react-image-gallery";
