@@ -1,0 +1,167 @@
+@import "/styles/global.scss";
+
+.background {
+  background: linear-gradient(180deg, #f6f9fe 0%, #f9fbff 100%);
+}
+
+.header {
+  padding-top: 20px;
+}
+
+.headerImgs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main {
+  margin-top: 20px;
+}
+
+.mainTitle {
+  font-size: 48px;
+  text-align: center;
+}
+
+.mainSubTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1;
+}
+
+.mainBlock {
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  column-gap: 30px;
+
+  @media only screen and (max-width: $tab) {
+    flex-direction: column;
+  }
+}
+
+.video {
+  video {
+    border-radius: 10px;
+  }
+}
+
+.howToStart {
+  margin-top: 60px;
+  display: flex;
+  column-gap: 30px;
+
+  h3 {
+    font-size: 36px;
+  }
+}
+
+.profitably {
+  background-color: $blueDark;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 32px 72px;
+  color: $white;
+}
+
+.profitablyList {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    display: flex;
+    margin-top: 40px;
+    font-size: 18px;
+    column-gap: 10px;
+    list-style: none;
+  }
+}
+
+.profitablyImage {
+  width: 100%;
+  max-width: 52px;
+}
+
+.needTodo {
+  background-color: $blue;
+  padding: 32px 32px 72px;
+  color: $white;
+}
+
+.needTodoList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-size: 18px;
+
+  li {
+    align-items: center;
+    list-style: none;
+    display: flex;
+    column-gap: 10px;
+    margin-top: 40px;
+  }
+
+  .line {
+    display: block;
+    background-color: $white;
+    min-width: 15px;
+    max-width: 15px;
+    height: 3px;
+  }
+}
+
+.millerBlock {
+  margin-top: 50px;
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-between;
+  background-color: $white;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.aboutMiller {
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+
+  h4 {
+    font-size: 24px;
+    color: $blueDark;
+  }
+
+  span {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: $black;
+    opacity: 0.5;
+  }
+}
+
+.millerTextBlock {
+    margin-top: 20px;
+    font-size: 20px;
+
+    p {
+        margin-top: 20px;
+    }
+}
+
+.millerImage {
+  width: 100%;
+  position: relative;
+}
+
+.calculatorBLock {
+    background-color: $blueDark;
+    padding: 48px 80px;
+}
+
+.calculator {
+    background-color: $white;
+    width: 100%;
+    max-width: 800px;
+    padding: 40px 60px;
+}
