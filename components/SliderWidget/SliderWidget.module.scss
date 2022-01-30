@@ -1,0 +1,31 @@
+.sliderWrap {
+  h2 {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  p {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  h3 {
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  [class~='rc-slider-mark-text'] {
+      font-size: 15px;
+  }
+}
+
+.slider {
+  margin-top: 40px;
+}
+
+.SliderWithTooltip {
+    font-size: 18px;
+}

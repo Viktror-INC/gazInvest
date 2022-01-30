@@ -1,0 +1,41 @@
+@import "/styles/global.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  padding: 24px 24px 16px;
+  border-radius: 10px;
+
+  @media only screen and (max-width: $tab) {
+    flex-direction: column;
+  }
+
+  h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+.selectWidget {
+  display: flex;
+  margin-top: 15px;
+  align-items: center;
+  border-radius: 5px;
+  height: 100%;
+  font-size: 16px;
+
+  select {
+    width: 100%;
+    max-width: 88px;
+    padding: 15px 5px;
+    height: 100%;
+    border: none;
+    background-color: $grey;
+  }
+
+  input {
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
