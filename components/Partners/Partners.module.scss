@@ -1,0 +1,18 @@
+.partners {
+  max-width: 800px;
+  margin: 50px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+  flex-wrap: wrap;
+
+  svg {
+    opacity: 0.5;
+    transition: all 0.2s linear;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

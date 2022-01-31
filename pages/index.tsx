@@ -1,67 +1,67 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Main.module.scss";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Main.module.scss';
 
-import ReactPlayer from "react-player/lazy";
-import SliderWidget from "../components/SliderWidget/SliderWidget";
+import ReactPlayer from 'react-player/lazy';
+import SliderWidget from '../components/SliderWidget/SliderWidget';
 
-import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
-import MainForm from "../components/MainFrom/MainForm";
-import Partners from "../components/Partners/Partners";
-import SubmitButton from "../components/SubmitButton/SubmitButton";
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
+import MainForm from '../components/MainFrom/MainForm';
+import Partners from '../components/Partners/Partners';
+import SubmitButton from '../components/SubmitButton/SubmitButton';
 
 const profitablyItems = [
   {
-    name: "Значительная прибыль при минимальных рисках",
-    img: "/images/profitably/arrow.png",
+    name: 'Значительная прибыль при минимальных рисках',
+    img: '/images/profitably/arrow.png',
   },
   {
-    name: "Один из самых доходных активов",
-    img: "/images/profitably/money.png",
+    name: 'Один из самых доходных активов',
+    img: '/images/profitably/money.png',
   },
   {
-    name: "Быстрый вывод средств на любую карту банка России",
-    img: "/images/profitably/calculate.png",
+    name: 'Быстрый вывод средств на любую карту банка России',
+    img: '/images/profitably/calculate.png',
   },
 ];
 
 const todoList = [
-  { name: "Зарегистрироваться на данном сайте в форме выше" },
+  { name: 'Зарегистрироваться на данном сайте в форме выше' },
   {
-    name: "Дождаться звонка от финансового эксперта Газпром и подтвердить регистрацию",
+    name: 'Дождаться звонка от финансового эксперта Газпром и подтвердить регистрацию',
   },
   {
-    name: "Внести желаемую сумму (от 18 000 руб) инвестиции на счет и уже к вечеру этого дня получить первую прибыль",
+    name: 'Внести желаемую сумму (от 18 000 руб) инвестиции на счет и уже к вечеру этого дня получить первую прибыль',
   },
 ];
 
 const projectList = [
   {
-    name: "Сила Сибири",
-    subtitle: "от 50 000 рублей ежемесячно",
-    descrition: "Крупнейшая система транспортировки газа на востоке России",
-    bgc: "/",
+    name: 'Сила Сибири',
+    subtitle: 'от 50 000 рублей ежемесячно',
+    descrition: 'Крупнейшая система транспортировки газа на востоке России',
+    bgc: '/images/projectsBlock/sibir.jpg',
   },
   {
-    name: "Северный поток",
-    subtitle: "25% гарантированных выплат ежемесячно",
-    descrition: "Газопровод, напрямую соединивший Россию и Европу",
-    bgc: "/",
+    name: 'Северный поток',
+    subtitle: '25% гарантированных выплат ежемесячно',
+    descrition: 'Газопровод, напрямую соединивший Россию и Европу',
+    bgc: '/images/projectsBlock/sever.jpg',
   },
   {
-    name: "Турецкий поток",
-    subtitle: "44% гарантированных выплат ежемесячно",
-    descrition: "Экспорт газа в Турцию, Южную и Юго-Восточную Европу",
-    bgc: "/",
+    name: 'Турецкий поток',
+    subtitle: '44% гарантированных выплат ежемесячно',
+    descrition: 'Экспорт газа в Турцию, Южную и Юго-Восточную Европу',
+    bgc: '/images/projectsBlock/turkish.jpg',
   },
 ];
 
 const images = [
   {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/250/150/",
+    original: '/images/license.jpg',
+    thumbnail: '/images/license.jpg',
   },
 ];
 
@@ -176,16 +176,16 @@ const Home: NextPage = () => {
                   долларов дохода ежемесячно.
                 </p>
               </div>
-              <SubmitButton text={'Подать заявку'} link url={'#form'}/>
+              <SubmitButton text={'Подать заявку'} link url={'#form'} />
             </div>
             <div className={styles.millerImage}>
-            <Image
-              src="/images/photo.jpg"
-              width={738}
-              height={808}
-              layout="responsive"
-              alt="Алексей Миллер"
-            />
+              <Image
+                src="/images/photo.jpg"
+                width={738}
+                height={808}
+                layout="responsive"
+                alt="Алексей Миллер"
+              />
             </div>
           </div>
         </div>
@@ -197,27 +197,43 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className={styles.container}>
-          <div className={styles.license}></div>
-          <h2>
-            Лицензия профессионального участника рынка ценных бумаг
-            «Газпром-Инвест»
-          </h2>
-          <p>
-            Лицензия №045-13980-02000 От 13.12.2019 Профессиональной и биржевой
-            деятельности по ценным бумагам ПАО `Государственная платформа
-            Газпром`
-          </p>
-          <ImageGallery items={images} />
+          <div className={styles.license}>
+            <h2>
+              Лицензия профессионального участника рынка ценных бумаг
+              «Газпром-Инвест»
+            </h2>
+            <p>
+              Лицензия №045-13980-02000 От 13.12.2019 Профессиональной и
+              биржевой деятельности по ценным бумагам ПАО `Государственная
+              платформа Газпром`
+            </p>
+            <div className={styles.imageGalleryWrap}>
+              <ImageGallery items={images} />
+            </div>
+          </div>
         </div>
         <div className={styles.projectsBlock}>
           <h3>Проекты Газпрома, открытые для участия</h3>
           <ul className={styles.projectsList}>
             {projectList.map((item, index) => {
               return (
-                <li key={index} style={{ background: item.bgc }}>
-                  <h4>{item.name}</h4>
-                  <span>{item.subtitle}</span>
-                  <p>{item.descrition}</p>
+                <li
+                  key={index}
+                  style={{
+                    background: `url(${item.bgc})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                >
+                  <div className={styles.backgroundShadow}>
+                    <h4>{item.name}</h4>
+                    <span>{item.subtitle}</span>
+                    <p>{item.descrition}</p>
+                    <div className={styles.SubmitButtonProjects}>
+                      <SubmitButton text={'Подать заявку'} link url={'#form'} />
+                    </div>
+                  </div>
                 </li>
               );
             })}
