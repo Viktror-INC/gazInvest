@@ -14,7 +14,7 @@ const marks = {
 };
 
 export default function SliderWidget() {
-  const [sliderValue, setSliderValue] = useState<number>();
+  const [sliderValue, setSliderValue] = useState<number>(18000);
   const [profitValue, setProfitValue] = useState<number>();
 
   const showedValue = (event: number) => {
@@ -39,11 +39,11 @@ export default function SliderWidget() {
           onChange={(event: number) => {
             setSliderValue(event);
             showedValue(event);
-          }}  
+          }}
         />
       </div>
       <p>Ваша прибыль</p>
-      <h3>{profitValue} руб.</h3>
+      <h3>{profitValue ? profitValue : showedValue(sliderValue)} руб.</h3>
       <SubmitButton text={"Подать заявку"} link url={"#form"} />
     </div>
   );
