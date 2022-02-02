@@ -15,38 +15,28 @@ const marks = {
   1000000: "1000000",
 };
 
+const mobMmarks = {
+        18000: "18000",
+        500000: "500000",
+        1000000: "1000000",
+};
+
 export default function SliderWidget() {
   const [sliderValue, setSliderValue] = useState<number>(18000);
   const [profitValue, setProfitValue] = useState<number>();
+  const [isMob, setIsMob] = useState(false);
 
-  const isMob = useMediaQuery({ maxWidth: 560 });
-
-  // const marks = useMemo(() => {
-  //   if (isMob) {
-  //     return {
-  //       18000: "18000",
-  //       500000: "500000",
-  //       1000000: "1000000",
-  //     };
-  //   }
-
-  //   return {
-  //     18000: "18000",
-  //     250000: "250000",
-  //     500000: "500000",
-  //     750000: "750000",
-  //     1000000: "1000000",
-  //   };
-  // },[isMob]);
-
-  console.log('isMob',isMob);
-  
+  const getIsMob = useMediaQuery({ maxWidth: 560 });
 
   const showedValue = (event: number) => {
     const percentValue = (Number(event) * 32) / 100;
     const finalValue = percentValue + Number(event);
     setProfitValue(finalValue);
   };
+
+  useEffect(() => {
+    setIsMob(getIsMob);
+  },[getIsMob])
 
   return (
     <div className={styles.sliderWrap}>
@@ -57,7 +47,7 @@ export default function SliderWidget() {
           min={18000}
           max={1000000}
           step={18000}
-          marks={marks}
+          marks={isMob ? mobMmarks : marks}
           value={sliderValue}
           tipFormatter={(value) => value}
           onChange={(event: number) => {
