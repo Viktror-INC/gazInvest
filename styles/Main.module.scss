@@ -185,6 +185,10 @@
 
   p {
     margin-top: 20px;
+
+    @media only screen and (max-width: $mob) {
+      font-size: 15px;
+    }
   }
 }
 
@@ -253,7 +257,8 @@
 
 .projectsList {
   display: flex;
-  margin-top: 20px;justify-content: center;
+  margin-top: 20px;
+  justify-content: center;
   column-gap: 20px;
 
   @media only screen and (max-width: $tab) {
@@ -311,4 +316,40 @@
 .SubmitButtonProjects {
   width: 100%;
   margin: auto auto 0;
+}
+
+.mainFormBlock {
+  background-color: $blueDark;
+  padding: 100px 0;
+}
+
+.mainForm {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+  max-width: 500px;
+  justify-content: center;
+
+  form {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.mainFormImg {
+  display: flex;
+  margin: 0 auto;
+}
+
+.footer {
+  padding: 20px 10px;
+  text-align: center;
+  color: $greyDark;
+
+  @media only screen and (max-width: $mob) {
+    font-size: 15px;
+  }
 }

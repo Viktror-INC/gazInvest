@@ -106,7 +106,7 @@ const Home: NextPage = () => {
               <ReactPlayer
                 className={styles.video}
                 width="100%"
-                height="100%"
+                height="auto"
                 url="/videos/video.mp4"
                 controls
               />
@@ -245,8 +245,16 @@ const Home: NextPage = () => {
         <div className={styles.mainFormBlock}>
           <div className={styles.container}>
             <div className={styles.mainForm}>
-              <Image src="/images" width="114" height="56" alt="logo" />
-              <h3>Начните зарабатывать на государственном газе!</h3>
+              <div className={styles.mainFormImg}>
+                <Image
+                  src="/images/header/logo.png"
+                  layout="fixed"
+                  objectFit="cover"
+                  width="114"
+                  height="56"
+                  alt="logo"
+                />
+              </div>
               <MainForm />
             </div>
           </div>
