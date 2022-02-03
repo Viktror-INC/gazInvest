@@ -6,7 +6,14 @@ import { TMainForm } from './@types';
 import styles from './MainForm.module.scss';
 
 export default function MainForm(props: TMainForm) {
-  const { fullData, className, validateField, sendData } = props;
+  const {
+    fullData,
+    invalidFields,
+    className,
+    validateField,
+    sendData,
+    onBlur,
+  } = props;
 
   const { name, lastName, email, fullPhone } = fullData;
   return (
@@ -23,6 +30,8 @@ export default function MainForm(props: TMainForm) {
         required={true}
         placeholder="Имя"
         name={'name'}
+        onBlur={onBlur}
+        invalid={invalidFields.includes('name')}
       />
       <InputWidget
         onChange={validateField}
@@ -31,6 +40,8 @@ export default function MainForm(props: TMainForm) {
         required={true}
         placeholder="Фамилия"
         name={'lastName'}
+        onBlur={onBlur}
+        invalid={invalidFields.includes('lastName')}
       />
       <InputWidget
         onChange={validateField}
@@ -39,6 +50,8 @@ export default function MainForm(props: TMainForm) {
         required={true}
         placeholder="Email"
         name={'email'}
+        onBlur={onBlur}
+        invalid={invalidFields.includes('email')}
       />
       <InputWidget
         onChange={validateField}
@@ -48,6 +61,8 @@ export default function MainForm(props: TMainForm) {
         placeholder="322-22-12"
         name={'fullPhone'}
         maxLength={12}
+        onBlur={onBlur}
+        invalid={invalidFields.includes('fullPhone')}
       />
       <SubmitButton text={'Подать заявку'} />
     </form>

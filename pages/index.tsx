@@ -21,6 +21,7 @@ import Counter from '../components/Counter/Counter';
 import { useEffect, useState } from 'react';
 import { TValidateFields } from '../components/MainFrom/@types';
 import axios from 'axios';
+import _ from 'lodash';
 
 const Home: NextPage = () => {
   const [name, setName] = useState('');
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
   const [email, setEmail] = useState('');
   const [fullPhone, setFullPhone] = useState('');
   const [ip, setIP] = useState('');
+  const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
 
   const fullData = {
     name,
@@ -39,11 +41,11 @@ const Home: NextPage = () => {
   const sendData = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const { data } = await axios({
+      await axios({
         method: 'post',
         url: '/api/v3/integration?api_token=DrBh7gRtMIeAqdBKbwGim9On8fA3wNH8u3fiJ0s3OKbVGKjlSTPhJGhggFvU',
         data: {
-          link_id: 1990,
+          link_id: 1997,
           fname: `${name}`,
           email: `${email}`,
           fullphone: `${fullPhone}`,
@@ -63,16 +65,17 @@ const Home: NextPage = () => {
 
   /**Validate inputs in form */
   const validateField = (props: TValidateFields) => {
-    const { name, value } = props;
+    let { value } = props;
+    const { name } = props;
     switch (name) {
       case 'name':
-        if (/[^a-zA-Z]/.test(value)) {
+        if (/[0-9_]/.test(value)) {
           return;
         }
         setName(value);
         break;
       case 'lastName':
-        if (/[^a-zA-Z]/.test(value)) {
+        if (/[0-9_]/.test(value)) {
           return;
         }
         setlastName(value);
@@ -94,6 +97,39 @@ const Home: NextPage = () => {
         break;
     }
   };
+
+  const checkValidFields = (name: string, value: string) => {
+    console.log('value', value);
+    console.log('name', name);
+
+    if (!value && !invalidFields.includes(name)) {
+      setInvalidFields([...invalidFields, name]);
+    }
+
+    if (value) {
+      setInvalidFields(_.remove(invalidFields, (item) => item === name));
+    }
+  };
+
+  const onBlur = (props: TValidateFields) => {
+    const { name, value } = props;
+    switch (name) {
+      case 'name':
+        checkValidFields(name, value);
+        break;
+      case 'lastName':
+        checkValidFields(name, value);
+        break;
+      case 'email':
+        checkValidFields(name, value);
+        break;
+      case 'fullPhone':
+        checkValidFields(name, value);
+        break;
+    }
+  };
+
+  console.log('invalidFields', invalidFields);
 
   /**GET CLIENT IP */
   useEffect(() => {
@@ -170,6 +206,8 @@ const Home: NextPage = () => {
               sendData={sendData}
               fullData={fullData}
               validateField={validateField}
+              onBlur={onBlur}
+              invalidFields={invalidFields}
             />
           </div>
           <div className={styles.howToStart}>
@@ -318,6 +356,8 @@ const Home: NextPage = () => {
                 sendData={sendData}
                 fullData={fullData}
                 validateField={validateField}
+                onBlur={onBlur}
+                invalidFields={invalidFields}
               />
             </div>
           </div>

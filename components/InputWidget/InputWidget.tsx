@@ -10,13 +10,21 @@ export default function InputWidget(props: TInputWidget) {
     maxLength,
     type,
     required = false,
+    invalid,
     onChange,
+    onBlur,
   } = props;
   return (
     <div className={styles.inputWrap}>
       <input
         onChange={(event) =>
           onChange({
+            name: event.currentTarget.name,
+            value: event.currentTarget.value,
+          })
+        }
+        onBlur={(event) =>
+          onBlur({
             name: event.currentTarget.name,
             value: event.currentTarget.value,
           })

@@ -5,8 +5,10 @@ export type TInputWidget = {
   placeholder: string;
   required: boolean;
   onChange: (props: TValidateFields) => void;
+  onBlur: (props: TValidateFields) => void;
   value: string;
   name?: string;
   maxLength?: number;
   type: string;
+  invalid?: boolean;
 };
