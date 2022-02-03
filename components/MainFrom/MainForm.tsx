@@ -20,6 +20,7 @@ export default function MainForm(props: TMainForm) {
   const [ip, setIP] = useState('');
   const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
 
+  /**Send User Data */
   const sendData = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -85,6 +86,7 @@ export default function MainForm(props: TMainForm) {
     }
   };
 
+  /**Remove or add Invalid Fields */
   const checkValidFields = (name: string, value: string) => {
     const removeFields = invalidFields.filter(item => item !== name);
 
@@ -107,6 +109,7 @@ export default function MainForm(props: TMainForm) {
     }
   };
 
+  /**Validate fields on blur */
   const onBlur = (props: TValidateFields) => {
     const { name, value } = props;
     switch (name) {
