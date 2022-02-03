@@ -1,8 +1,9 @@
+import classNames from 'classnames';
 import React from 'react';
 import { TInputWidget } from './@types';
 import styles from './InputWidget.module.scss';
 
-export default function InputWidget(props: TInputWidget) {
+export default function InputWidgetComponent(props: TInputWidget) {
   const {
     value,
     placeholder,
@@ -14,6 +15,7 @@ export default function InputWidget(props: TInputWidget) {
     onChange,
     onBlur,
   } = props;
+  
   return (
     <div className={styles.inputWrap}>
       <input
@@ -29,7 +31,9 @@ export default function InputWidget(props: TInputWidget) {
             value: event.currentTarget.value,
           })
         }
-        className={styles.input}
+        className={classNames(styles.input,{
+          [styles.inpuError]:invalid
+        })}
         required={required}
         placeholder={placeholder}
         value={value}
@@ -40,3 +44,4 @@ export default function InputWidget(props: TInputWidget) {
     </div>
   );
 }
+

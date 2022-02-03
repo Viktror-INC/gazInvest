@@ -24,126 +24,7 @@ import axios from 'axios';
 import _ from 'lodash';
 
 const Home: NextPage = () => {
-  const [name, setName] = useState('');
-  const [lastName, setlastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [fullPhone, setFullPhone] = useState('');
-  const [ip, setIP] = useState('');
-  const [invalidFields, setInvalidFields] = useState<Array<string>>([]);
-
-  const fullData = {
-    name,
-    lastName,
-    email,
-    fullPhone,
-  };
-
-  const sendData = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      await axios({
-        method: 'post',
-        url: '/api/v3/integration?api_token=DrBh7gRtMIeAqdBKbwGim9On8fA3wNH8u3fiJ0s3OKbVGKjlSTPhJGhggFvU',
-        data: {
-          link_id: 1997,
-          fname: `${name}`,
-          email: `${email}`,
-          fullphone: `${fullPhone}`,
-          lname: `${lastName}`,
-          source: `gaz-invest.app`,
-          ip: `${ip}`,
-          domain: `gaz-invest.app`,
-        },
-      });
-
-      setName('');
-      setlastName('');
-      setEmail('');
-      setFullPhone('');
-    } catch (error) {}
-  };
-
-  /**Validate inputs in form */
-  const validateField = (props: TValidateFields) => {
-    let { value } = props;
-    const { name } = props;
-    switch (name) {
-      case 'name':
-        if (/[0-9_]/.test(value)) {
-          return;
-        }
-        setName(value);
-        break;
-      case 'lastName':
-        if (/[0-9_]/.test(value)) {
-          return;
-        }
-        setlastName(value);
-        break;
-      case 'email':
-        setEmail(value);
-        break;
-      case 'fullPhone':
-        /**Testing Only Number with one + */
-        if (/[^+0-9]/.test(value) || /^\+.*?\+/.test(value)) {
-          return;
-        }
-
-        /**If namber dont have + in start string */
-        if (/^[^\+]/.test(value)) {
-          return setFullPhone('+' + value);
-        }
-        setFullPhone(value);
-        break;
-    }
-  };
-
-  const checkValidFields = (name: string, value: string) => {
-    console.log('value', value);
-    console.log('name', name);
-
-    if (!value && !invalidFields.includes(name)) {
-      setInvalidFields([...invalidFields, name]);
-    }
-
-    if (value) {
-      setInvalidFields(_.remove(invalidFields, (item) => item === name));
-    }
-  };
-
-  const onBlur = (props: TValidateFields) => {
-    const { name, value } = props;
-    switch (name) {
-      case 'name':
-        checkValidFields(name, value);
-        break;
-      case 'lastName':
-        checkValidFields(name, value);
-        break;
-      case 'email':
-        checkValidFields(name, value);
-        break;
-      case 'fullPhone':
-        checkValidFields(name, value);
-        break;
-    }
-  };
-
-  console.log('invalidFields', invalidFields);
-
-  /**GET CLIENT IP */
-  useEffect(() => {
-    const getIP = async () => {
-      const { data } = await axios({
-        method: 'GET',
-        url: 'https://ip.nf/me.json',
-      });
-      setIP(data.ip.ip);
-    };
-
-    getIP();
-  }, []);
-
+ 
   return (
     <div className={styles.background}>
       <Head>
@@ -202,13 +83,7 @@ const Home: NextPage = () => {
                 controls
               />
             </div>
-            <MainForm
-              sendData={sendData}
-              fullData={fullData}
-              validateField={validateField}
-              onBlur={onBlur}
-              invalidFields={invalidFields}
-            />
+            <MainForm/>
           </div>
           <div className={styles.howToStart}>
             <div className={styles.profitably}>
@@ -352,13 +227,7 @@ const Home: NextPage = () => {
                   alt="logo"
                 />
               </div>
-              <MainForm
-                sendData={sendData}
-                fullData={fullData}
-                validateField={validateField}
-                onBlur={onBlur}
-                invalidFields={invalidFields}
-              />
+              <MainForm/>
             </div>
           </div>
         </div>
