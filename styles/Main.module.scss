@@ -13,6 +13,26 @@
   justify-content: space-between;
 }
 
+.fixedElements {
+  position: fixed;
+  top: 150px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 10;
+
+  @media only screen and (max-width: $tab) {
+    display: none;
+  }
+}
+
+.peoplesOnSite {
+  background-color: $blue;
+  color: $white;
+  text-align: center;
+  padding: 10px;
+}
+
 .main {
   margin-top: 20px;
 
