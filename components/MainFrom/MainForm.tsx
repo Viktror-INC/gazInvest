@@ -8,10 +8,7 @@ import { TMainForm, TValidateFields } from './@types';
 import styles from './MainForm.module.scss';
 
 export default function MainForm(props: TMainForm) {
-  const {
-    className,
-  } = props;
-  
+  const { className } = props;
 
   const [name, setName] = useState('');
   const [lastName, setlastName] = useState('');
@@ -24,8 +21,8 @@ export default function MainForm(props: TMainForm) {
   const sendData = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if(invalidFields.length){
-      return
+    if (invalidFields.length) {
+      return;
     }
 
     try {
@@ -33,7 +30,7 @@ export default function MainForm(props: TMainForm) {
         method: 'post',
         url: '/api/v3/integration?api_token=DrBh7gRtMIeAqdBKbwGim9On8fA3wNH8u3fiJ0s3OKbVGKjlSTPhJGhggFvU',
         data: {
-          link_id: 1997,
+          link_id: 1932,
           fname: `${name}`,
           email: `${email}`,
           fullphone: `${fullPhone}`,
@@ -48,7 +45,9 @@ export default function MainForm(props: TMainForm) {
       setlastName('');
       setEmail('');
       setFullPhone('');
-    } catch (error) {}
+    } catch (error) {
+      console.log('error', error);
+    }
   };
 
   /**Validate inputs in form */
@@ -88,13 +87,12 @@ export default function MainForm(props: TMainForm) {
 
   /**Remove or add Invalid Fields */
   const checkValidFields = (name: string, value: string) => {
-    const removeFields = invalidFields.filter(item => item !== name);
+    const removeFields = invalidFields.filter((item) => item !== name);
 
-    if(name == 'email') {
-
+    if (name == 'email') {
       /**if value mail remove from invalidFields*/
-      if(/^.*?@.*?\../.test(value)) {
-        return  setInvalidFields(removeFields);
+      if (/^.*?@.*?\../.test(value)) {
+        return setInvalidFields(removeFields);
       }
 
       return setInvalidFields([...invalidFields, name]);
@@ -103,7 +101,7 @@ export default function MainForm(props: TMainForm) {
     if (!value && !invalidFields.includes(name)) {
       return setInvalidFields([...invalidFields, name]);
     }
-/**if value empty remove */
+    /**if value empty remove */
     if (value) {
       setInvalidFields(removeFields);
     }
@@ -128,20 +126,19 @@ export default function MainForm(props: TMainForm) {
     }
   };
 
+  /**GET CLIENT IP */
+  useEffect(() => {
+    const getIP = async () => {
+      const { data } = await axios({
+        method: 'GET',
+        url: 'https://ip.nf/me.json',
+      });
+      setIP(data.ip.ip);
+    };
 
-    /**GET CLIENT IP */
-    useEffect(() => {
-      const getIP = async () => {
-        const { data } = await axios({
-          method: 'GET',
-          url: 'https://ip.nf/me.json',
-        });
-        setIP(data.ip.ip);
-      };
-  
-      getIP();
-    }, []);
-  
+    getIP();
+  }, []);
+
   return (
     <form
       id="form"
