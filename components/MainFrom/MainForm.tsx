@@ -181,7 +181,7 @@ export default function MainForm(props: TMainForm) {
         type="text"
         value={fullPhone}
         required={true}
-        placeholder="322-22-12"
+        placeholder="Номер телефона"
         name={'fullPhone'}
         maxLength={12}
         onBlur={onBlur}

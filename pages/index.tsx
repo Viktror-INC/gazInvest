@@ -18,13 +18,9 @@ import {
   images,
 } from '../apis/MainPageApi.js';
 import Counter from '../components/Counter/Counter';
-import { useEffect, useState } from 'react';
-import { TValidateFields } from '../components/MainFrom/@types';
-import axios from 'axios';
 import _ from 'lodash';
 
 const Home: NextPage = () => {
- 
   return (
     <div className={styles.background}>
       <Head>
@@ -83,7 +79,7 @@ const Home: NextPage = () => {
                 controls
               />
             </div>
-            <MainForm/>
+            <MainForm />
           </div>
           <div className={styles.howToStart}>
             <div className={styles.profitably}>
@@ -227,7 +223,7 @@ const Home: NextPage = () => {
                   alt="logo"
                 />
               </div>
-              <MainForm/>
+              <MainForm />
             </div>
           </div>
         </div>
